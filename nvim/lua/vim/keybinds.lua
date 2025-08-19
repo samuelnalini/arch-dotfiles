@@ -11,13 +11,14 @@ INDEX:
 <leader>fm - grep man pages
 <leader>fh - grep nvim help docs
 
+<ctrl>n - toggle nvim tree
+<leader>w - save
+<leader>q - quit
+
 ; - commandline
 y - yank/copy
 p - paste
 d - delete
-
-<leader>w - save
-<leader>q - quit
 
 ]]
 
@@ -35,6 +36,10 @@ vim.keymap.set({'n', 'v'}, 'd', '"+d', opts) --> delete
 vim.keymap.set({'n', 'x'}, ";", ":", opts) --> ; into :
 vim.keymap.set('n', "<leader>w", ":w<cr>", opts) --> space + w write
 vim.keymap.set('n', "<leader>q", ":q<cr>", opts) --> space + q quit
+
+-- Nvim Tree
+
+vim.keymap.set('n', "<C-n>", "<cmd>NvimTreeToggle<cr>", opts)
 
 -- Fuzzy Finder
 

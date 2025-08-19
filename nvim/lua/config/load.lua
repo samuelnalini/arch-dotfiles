@@ -20,6 +20,17 @@ require("nvim-treesitter").setup({
 	install_dir = vim.fn.stdpath("data") .. "/site"
 })
 
+require("nvim-tree").setup({
+	renderer = {
+		group_empty = false,
+	},
+	filters = {
+		dotfiles = true,
+	},
+    view = {
+        width = 30
+    }
+})
 
 -- Load extensions
 
@@ -40,3 +51,4 @@ require("nvim-treesitter.config").setup({
 	indent = { enable = true },
 	auto_install = true
 })
+

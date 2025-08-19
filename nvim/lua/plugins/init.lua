@@ -21,4 +21,9 @@ return {
 		branch = "main",
 		build = ":TSUpdate"
 	},
+
+    { --> nvim tree (file explorer)
+        "nvim-tree/nvim-tree.lua",
+        dependencies = {"nvim-tree/nvim-web-devicons"}
+    },
 }

@@ -30,12 +30,12 @@ window#waybar {
   color: black;
 }
 
-#battery.warning {
+#battery.warning:not(.charging) {
   background-color: rgba(246, 250, 35, 0.7) /* #f6fa23 */;
   color: black;
 }
 
-#battery.critical {
+#battery.critical:not(.charging) {
   background-color: rgba(173, 35, 37, 0.7) /* #ad2325 */ ;
 }
 

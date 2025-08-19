@@ -41,11 +41,11 @@ while true; do
 	    if [ "$sent_warning" = true ]; then
 		    notify-send -r $notification_id_warning -u low "Charging" "Battery charging"
 		    sent_warning=false
-	    fi
-
-	    if [ "$sent_critical" = true ]; then
+		    sent_critical=false
+	    elif [ "$sent_critical" = true ]; then
 		    notify-send -r $notification_id_critical -u low "Charging" "Battery charging"
 		    sent_critical=false
+		    sent_warning=false
 	    fi
     else
 	    if [ "$capacity" -le "$THRESHOLD_CRITICAL" ] && [ "$sent_critical" = false ]; then

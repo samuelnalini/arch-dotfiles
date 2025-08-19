@@ -1,0 +1,94 @@
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "Font Awesome 7 Brands", sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  border: none;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+.module,
+#workspaces {
+  background-color: rgba(30, 30, 46, 0.7);
+  border-radius: 10px;
+  margin: 5px 3px;
+  padding: 5px 10px;
+}
+
+/* Individual module tweaks */
+#network,
+#battery,
+#pulseaudio,
+#clock {
+  padding: 0 15px;
+}
+
+#battery.charging {
+  background-color: rgba(35, 250, 92, 0.7) /* #23fa5c */;
+  color: black;
+}
+
+#battery.warning {
+  background-color: rgba(246, 250, 35, 0.7) /* #f6fa23 */;
+  color: black;
+}
+
+#battery.critical {
+  background-color: rgba(173, 35, 37, 0.7) /* #ad2325 */ ;
+}
+
+#tray {
+  background-color: rgba(30, 30, 46, 0.7);
+}
+
+#tray menu {
+  background-color: rgba(30, 30, 46, 1);
+}
+
+#workspaces button {
+  padding: 4px 8px;
+  margin: 0 3px;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+  background-color: rgba(61, 120, 245, 0.7) /* #3d78f5 */;
+}
+
+
+#workspaces button:hover {
+  background: none;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  background-color: rgba(115, 115, 115, 1) /* #737373 */;
+}
+
+#workspaces button.active:hover {
+  background-color: rgba(59, 154, 255, 1) /* #3b9aff */;
+}
+
+#bluetooth {
+  background-color: rgba(30, 30, 46, 0.7); /* same blur-friendly base */
+  font-size: 14px;
+  color: #70c6ff;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+#bluetooth.connected {
+  /* color: #a6e3a1; connected */
+}
+
+#bluetooth.disconnected {
+  /* color: #f38ba8;  red or pink when disconnected */
+}
+
+#bluetooth.disabled {
+  opacity: 0.5;
+  color: #6c7086; /* muted gray */
+}

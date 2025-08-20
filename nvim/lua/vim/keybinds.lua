@@ -4,6 +4,8 @@
 
 INDEX:
 
+* grep
+
 <leader>ff - grep in current working directory
 <leader>fs - grep string
 <leader>fr - grep recently opened files
@@ -11,9 +13,16 @@ INDEX:
 <leader>fm - grep man pages
 <leader>fh - grep nvim help docs
 
+* nvim tree
+
 <ctrl>n - toggle nvim tree
+
+* save/quit
+
 <leader>w - save
 <leader>q - quit
+
+* misc
 
 ; - commandline
 y - yank/copy

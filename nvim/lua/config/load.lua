@@ -13,12 +13,20 @@ require("telescope").setup({
 			override_file_sorter = true,
 			case_mode = "smart_case" -- smart_case, ignore_case, respect_case
 		}
-	}
+	},
+
+    pickers = {
+        man_pages = {
+            sections = {
+                "1", "2", "3",
+                "4", "5", "6",
+                "7", "8", "9"
+            }
+        }
+    }
 })
 
-require("nvim-treesitter").setup({
-	install_dir = vim.fn.stdpath("data") .. "/site"
-})
+
 
 require("nvim-tree").setup({
 	renderer = {
@@ -40,15 +48,40 @@ end)
 
 -- Treesitter
 
-require("nvim-treesitter.config").setup({
-	ensure_installed = {
-		"lua", "python", "javascript", "typescript",
-		"html", "css", "json", "yaml", "bash", "markdown",
-		"c", "cpp", "rust", "arduino", "asm", "cmake",
-		"dockerfile", "make", "objdump"
-	},
-	highlight = { enable = true },
-	indent = { enable = true },
-	auto_install = true
+require("nvim-treesitter").setup({
+    install_dir = vim.fn.stdpath("data") .. "/site",
 })
 
+local parsers = {
+    "c", "cpp", "lua", "python", "bash", "markdown",
+    "cmake", "make", "html", "css", "javascript",
+    "asm", "objdump", "rust", "arduino",
+    "dockerfile", "json", "yaml", "csv"
+}
+
+local treesitter_config = require("nvim-treesitter.config")
+local installed_parsers = treesitter_config.get_installed()
+
+local missing_parsers = {}
+
+for _,lang in ipairs(parsers) do
+    if not vim.tbl_contains(installed_parsers, lang) then
+        table.insert(missing_parsers, lang)
+    end
+end
+
+if #missing_parsers > 0 then
+    vim.cmd("silent! lua require('nvim-treesitter').install(" .. vim.json.encode(missing_parsers) .. ")")
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+    end
+})
+
+--[[vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
+    end
+})]]

@@ -1,6 +1,17 @@
 return {
 
-	{ --> Lualine
+    { --> nightfly theme
+        "bluz71/vim-nightfly-colors",
+        name = "nightfly",
+        lazy = false,
+        priority = 1000,
+        config = function(plugin)
+            vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
+            vim.cmd([[colorscheme nightfly]])
+        end
+    },
+
+	{ --> lualine
 		"nvim-lualine/lualine.nvim",
 		dependencies = {"nvim-tree/nvim-web-devicons"},
 	},
